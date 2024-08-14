@@ -18,7 +18,7 @@ os.environ["GOOGLE_API_KEY"] = "AIzaSyASDLRRhBg-8ySqEzbrzk1uOWQg395Ckd4"
 
 # Загрузка документа
 text = ""
-file = open("c:/tmp/python/text_interview.pdf", "rb")
+file = open("c:/tmp/python/text_company.pdf", "rb")
 pdf = PyPDF2.PdfReader(file)
 for page in pdf.pages:
     text += page.extract_text()
@@ -39,9 +39,8 @@ vector_store.save_local("faiss_local")
 
 llm = ChatGoogleGenerativeAI(model="gemini-pro",
                              temperature=0.4, max_length=10000)
-system_prompt = """This file contains data on 31 python interview question. Each person has a description of their age, 
-    profession, salary, work experience, and additional information. All the questions are numbered. Text written 
-    under question applies to that person until the next question.) Answer the question in as much detail as 
+system_prompt = """This file contains data on 25 workers of online language school. All the workers are numbered. The first two words after the number are name and surname.
+    Description of each worker contains their sex, age, work experience, duties and hobby. Answer the question in as much detail as 
     possible, given the context provided. Answer only in Russian\n\nContext:\n {context}?\nQuestion: \n{question}\nAnswer:"""
 
 
